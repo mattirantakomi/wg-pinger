@@ -1,0 +1,5 @@
+version: "2.1"
+services:
+  wg-pinger:
+    build: .
+    image: "mattirantakomi/wg-pinger:20211216-2"

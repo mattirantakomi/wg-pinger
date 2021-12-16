@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wg-pinger
+  namespace: wg-pinger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wg-pinger
+  template:
+    metadata:
+      labels:
+        app: wg-pinger
+    spec:
+      hostNetwork: true    
+      containers:
+        - name: wg-pinger
+          image: mattirantakomi/wg-pinger:20211216-2
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "10m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          securityContext:  
+            privileged: true
+      nodeSelector:
+        kubernetes.io/hostname: master
