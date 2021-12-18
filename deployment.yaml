@@ -13,6 +13,8 @@ spec:
       labels:
         app: wg-pinger
     spec:
+      tolerations:
+      - operator: "Exists"
       hostNetwork: true    
       containers:
         - name: wg-pinger
